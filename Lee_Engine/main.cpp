@@ -12,13 +12,13 @@ WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
-ATOM                MyRegisterClass(HINSTANCE hInstance);
-BOOL                InitInstance(HINSTANCE, int);
+ATOM                MyRegisterClass(HINSTANCE hInstance); 
+BOOL                InitInstance(HINSTANCE, int);      
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
-int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
+int APIENTRY wWinMain(_In_ HINSTANCE hInstance, //프로그램의 인스턴스 핸들
+                     _In_opt_ HINSTANCE hPrevInstance, //바로앞에 실행된 현재 프로그햄의 인스턴스 핸들, 없을경우에 NULL
                      _In_ LPWSTR    lpCmdLine,
                      _In_ int       nCmdShow)
 {
@@ -98,8 +98,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
-
+      CW_USEDEFAULT, 0, 1600, 900, nullptr, nullptr, hInstance, nullptr);
+       //화면 위치        크기
    if (!hWnd)
    {
       return FALSE;
