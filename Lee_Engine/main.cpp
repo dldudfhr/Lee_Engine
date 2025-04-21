@@ -70,7 +70,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 
     wcex.style          = CS_HREDRAW | CS_VREDRAW;
     wcex.lpfnWndProc    = WndProc;
-    wcex.cbClsExtra     = 0;
+    wcex.cbClsExtra     = 30;
     wcex.cbWndExtra     = 0;
     wcex.hInstance      = hInstance;
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_LEEENGINE));
@@ -146,7 +146,28 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
+
+            HBRUSH brush = CreateSolidBrush(RGB(255, 0, 255));//색상
+            HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, brush);//원레 색상을 oldBrush에 저장 후 색상 적용
+            
+            Rectangle(hdc, 100, 100, 200, 200); //사각형
+
+            (HBRUSH)SelectObject(hdc, oldBrush); // oldBrush를 불러와 다시 휜색 적용
+            DeleteObject(brush);//API에서 제공되는 delete 사용 파랑 삭제
+
+            HPEN redPen = CreatePen(PS_DASH, 2, RGB(0, 255, 255)); //선 종류, 색상 두께 선택
+            HPEN oldPen = (HPEN)SelectObject(hdc, redPen);//적용
+
+            Ellipse(hdc, 200, 200, 300, 300);  //원
+
+            (HPEN)SelectObject(hdc, oldPen);//기본색 복구
+            DeleteObject(redPen);//delete
+
+            //DC란 화면에 출력에 필요한 모든 정보를 가지는 데이터 구조체
+            //GDI모듈에의해서 관리된다
+            //폰트, 선의 굵기, 색상
+            //화면 출력에 필요한 모든 경우는 WINAPI에서는 DC를 통해서 작업을 진행할수 있다
+            //TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             EndPaint(hWnd, &ps);
         }
         break;
