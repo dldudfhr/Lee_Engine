@@ -4,6 +4,10 @@
 #include "framework.h"
 #include "Lee_Engine.h"
 
+#include "..\\Lee_SOURCE\\Lee_Application.h"
+
+Application app;
+
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
@@ -24,14 +28,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, //프로그램의 인스턴스 �
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
-
+    app.test();
     // TODO: 여기에 코드를 입력합니다.
-
+    // 
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_LEEENGINE, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
-
+    
     // 애플리케이션 초기화를 수행합니다:
     if (!InitInstance (hInstance, nCmdShow))
     {
@@ -42,8 +46,28 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, //프로그램의 인스턴스 �
 
     MSG msg;
 
+    //PeekMessage 함수
+    while (true) 
+    {
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))  //REMOVE명령어로 메세지를 처리해줌
+        {
+            if (msg.message == WM_QUIT)//메세지가 '종료' 이면 루프 빠져나감
+                break;
+            if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+            {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+        }
+        else
+        {
+            //메세지가 없을 경우 여기서 처리
+            //게임 로직이 들어가면 된다.
+        }
+    }
+
     // 기본 메시지 루프입니다:
-    while (GetMessage(&msg, nullptr, 0, 0))
+    /*while (GetMessage(&msg, nullptr, 0, 0))
     {
         if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
         {
@@ -51,7 +75,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, //프로그램의 인스턴스 �
             DispatchMessage(&msg);
         }
     }
-
+    */
     return (int) msg.wParam;
 }
 
@@ -142,6 +166,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
+
     case WM_PAINT:
         {
             PAINTSTRUCT ps;
