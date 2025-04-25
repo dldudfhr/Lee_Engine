@@ -4,9 +4,9 @@
 #include "framework.h"
 #include "Lee_Engine.h"
 
-#include "..\\Lee_SOURCE\\Lee_Application.h"
+#include "..\\Lee_SOURCE\\Lee_Application.h" //my
 
-Application app;
+lee::Application application;//전역변수 my
 
 #define MAX_LOADSTRING 100
 
@@ -28,9 +28,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, //프로그램의 인스턴스 �
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
-    app.test();
+
+    
     // TODO: 여기에 코드를 입력합니다.
-    // 
+    
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_LEEENGINE, szWindowClass, MAX_LOADSTRING);
@@ -46,7 +47,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, //프로그램의 인스턴스 �
 
     MSG msg;
 
-    //PeekMessage 함수
+    //PeekMessage 함수 my
     while (true) 
     {
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))  //REMOVE명령어로 메세지를 처리해줌
@@ -61,8 +62,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, //프로그램의 인스턴스 �
         }
         else
         {
-            //메세지가 없을 경우 여기서 처리
-            //게임 로직이 들어가면 된다.
+            application.Run();
         }
     }
 
@@ -124,6 +124,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, 1600, 900, nullptr, nullptr, hInstance, nullptr);
        //화면 위치        크기
+   
+   application.Initialize(hWnd); //받은 핸들을 Application 함수에 넣음 my
+
    if (!hWnd)
    {
       return FALSE;
@@ -172,21 +175,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
 
-            HBRUSH brush = CreateSolidBrush(RGB(255, 0, 255));//색상
-            HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, brush);//원레 색상을 oldBrush에 저장 후 색상 적용
             
-            Rectangle(hdc, 100, 100, 200, 200); //사각형
-
-            (HBRUSH)SelectObject(hdc, oldBrush); // oldBrush를 불러와 다시 휜색 적용
-            DeleteObject(brush);//API에서 제공되는 delete 사용 파랑 삭제
-
-            HPEN redPen = CreatePen(PS_DASH, 2, RGB(0, 255, 255)); //선 종류, 색상 두께 선택
-            HPEN oldPen = (HPEN)SelectObject(hdc, redPen);//적용
-
-            Ellipse(hdc, 200, 200, 300, 300);  //원
-
-            (HPEN)SelectObject(hdc, oldPen);//기본색 복구
-            DeleteObject(redPen);//delete
 
             //DC란 화면에 출력에 필요한 모든 정보를 가지는 데이터 구조체
             //GDI모듈에의해서 관리된다

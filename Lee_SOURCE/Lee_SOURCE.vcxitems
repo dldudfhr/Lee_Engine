@@ -14,9 +14,12 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Commonlnclude.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)LeeGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Lee_Application.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Lee-Application.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)LeeGameObject.cpp" />
   </ItemGroup>
 </Project>
