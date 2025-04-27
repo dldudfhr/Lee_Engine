@@ -1,5 +1,6 @@
 #pragma once
 #include "Commonlnclude.h"
+#include "LeeGameObject.h"
 
 namespace lee {
 
@@ -18,9 +19,12 @@ namespace lee {
 	private:
 		HWND mHwnd;
 		HDC mHdc;
-		float mx;
-		float my;
+		
 		float mSpeed;
+
+		//float mx;
+		//float my;
+		GameObject player;
 		
 	};
 
