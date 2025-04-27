@@ -7,10 +7,11 @@ namespace lee {
 		GameObject();
 		~GameObject();
 
-		void setPosition(float, float);
-		float GetPositionX();
-		float GetPositionY();
+		void Updata();
+		void LateUdata();
+		void Render(HDC mHdc);
 	private:
+		float mSpeed;
 		float mx;
 		float my;
 	};

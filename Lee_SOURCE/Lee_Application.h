@@ -20,10 +20,6 @@ namespace lee {
 		HWND mHwnd;
 		HDC mHdc;
 		
-		float mSpeed;
-
-		//float mx;
-		//float my;
 		GameObject player;
 		
 	};

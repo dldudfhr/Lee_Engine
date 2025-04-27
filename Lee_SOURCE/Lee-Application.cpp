@@ -2,8 +2,7 @@
 
 namespace lee {
 	Application::Application() : mHwnd{ nullptr }, 
-		mHdc{ nullptr }, 
-		mSpeed{0.0f}
+		mHdc{ nullptr }
 	{
 	}
 	Application::~Application() {}
@@ -25,24 +24,7 @@ namespace lee {
 
 	void Application::Updata() 
 	{
-		float x = player.GetPositionX();
-		float y = player.GetPositionY();
-		mSpeed = 0.01f;
-		if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
-			x -= mSpeed;
-		}
-		if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
-			x += mSpeed;
-		}
-		if (GetAsyncKeyState(VK_UP) & 0x8000) {
-			y -= mSpeed;
-		}
-		if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
-			y += mSpeed;
-		}
-		player.setPosition(x, y);
-		
-		//my += mSpeed;
+		player.Updata();
 	}
 
 	void Application::LateUpdata()
@@ -52,14 +34,6 @@ namespace lee {
 
 	void Application::Render()
 	{
-		float x = player.GetPositionX();
-		float y = player.GetPositionY();
-		HBRUSH brush = CreateSolidBrush(RGB(255, 0, 255));//색상
-		HBRUSH oldBrush = (HBRUSH)SelectObject(mHdc, brush);//원레 색상을 oldBrush에 저장 후 색상 적용
-
-		Rectangle(mHdc, 100 + x, 100 + y, 200 + x, 200 + y); //사각형
-
-		(HBRUSH)SelectObject(mHdc, oldBrush); // oldBrush를 불러와 다시 휜색 적용
-		DeleteObject(brush);//API에서 제공되는 delete 사용 파랑 삭제
+		player.Render(mHdc);
 	}
 }
