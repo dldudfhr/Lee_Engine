@@ -1,4 +1,6 @@
 #include "Lee_Application.h"
+#include "LeeInPut.h"
+
 
 namespace lee {
 	Application::Application() : mHwnd{ nullptr }, 
@@ -12,19 +14,21 @@ namespace lee {
 	{
 		mHwnd = hwnd; //핸들 초기화
 		mHdc = GetDC(hwnd);//GetDC에 핸들넣으면 HDC형으로 반환
+		InPut::Initailize(); //최초 1번만 하면 되기때문
 	}
 
-	void Application::Run() 
+	void Application::Run(int a) 
 	{
-		Updata();
+		Updata(a);
 		LateUpdata();
-		Render();
+		Render(a);
 
 	}
 
-	void Application::Updata() 
+	void Application::Updata(int a) 
 	{
-		player.Updata();
+		InPut::Updata();
+		player.Updata(a);
 	}
 
 	void Application::LateUpdata()
@@ -32,8 +36,8 @@ namespace lee {
 
 	}
 
-	void Application::Render()
+	void Application::Render(int a)
 	{
-		player.Render(mHdc);
+		player.Render(mHdc, a);
 	}
 }

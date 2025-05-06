@@ -15,11 +15,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Commonlnclude.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)LeeGameObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)LeeInPut.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)LeePlayerObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Lee_Application.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Lee-Application.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)LeeGameObject.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)LeeInPut.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)LeePlayerObject.cpp" />
   </ItemGroup>
 </Project>

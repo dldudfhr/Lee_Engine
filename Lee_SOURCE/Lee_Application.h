@@ -1,6 +1,6 @@
 #pragma once
 #include "Commonlnclude.h"
-#include "LeeGameObject.h"
+#include "LeePlayerObject.h"
 
 namespace lee {
 
@@ -10,17 +10,17 @@ namespace lee {
 		Application();
 		~Application();
 		void Initialize(HWND);//이니셜라이즈
-		void Run();
+		void Run(int);
 
-		void Updata();
+		void Updata(int);
 		void LateUpdata();
-		void Render();//랜더에서 그리기 사용
+		void Render(int);//랜더에서 그리기 사용
 
 	private:
 		HWND mHwnd;
 		HDC mHdc;
 		
-		GameObject player;
+		Player_Object player;
 		
 	};
 
