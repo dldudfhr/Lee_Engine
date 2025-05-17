@@ -18,10 +18,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)LeeInPut.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)LeePlayerObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Lee_Application.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Lee_Time.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Lee-Application.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Lee_Application.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)LeeInPut.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)LeePlayerObject.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Lee_Time.cpp" />
   </ItemGroup>
 </Project>

@@ -15,6 +15,7 @@ namespace lee {
 		mHwnd = hwnd; //핸들 초기화
 		mHdc = GetDC(hwnd);//GetDC에 핸들넣으면 HDC형으로 반환
 		InPut::Initailize(); //최초 1번만 하면 되기때문
+		Time::Initialize();
 	}
 
 	void Application::Run(int a) 
@@ -22,12 +23,15 @@ namespace lee {
 		Updata(a);
 		LateUpdata();
 		Render(a);
+		
 
 	}
 
 	void Application::Updata(int a) 
 	{
 		InPut::Updata();
+		Time::Updata();
+
 		player.Updata(a);
 	}
 
@@ -39,5 +43,6 @@ namespace lee {
 	void Application::Render(int a)
 	{
 		player.Render(mHdc, a);
+		Time::Render(mHdc);
 	}
 }

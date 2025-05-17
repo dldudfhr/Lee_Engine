@@ -1,6 +1,7 @@
 #pragma once
 #include "Commonlnclude.h"
 #include "LeePlayerObject.h"
+#include "Lee_Time.h"
 
 namespace lee {
 

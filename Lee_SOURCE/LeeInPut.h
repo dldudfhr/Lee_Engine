@@ -30,6 +30,8 @@ namespace lee {
 		static bool GetKeyUp(eKeyCode code) { return mKeys[(UINT)code].state == eKeyState::Up;}
 		static bool GetKey(eKeyCode code) { return mKeys[(UINT)code].state == eKeyState::Pressed;}
 	private:
+		static void createKey();
+		static void updataKey();
 		static std::vector<key> mKeys;
 	};
 }

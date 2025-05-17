@@ -12,8 +12,18 @@ namespace lee {
 
 	void InPut::Initailize()
 	{
-		for (size_t i = 0; i < (UINT)eKeyCode::End; i++) 
-		{
+		createKey();//키 초기화
+	}
+
+	void InPut::Updata()
+	{
+		updataKey();//유니티등 엔진에 키 입력을 구현
+	}
+
+	void InPut::createKey()
+	{
+		for (size_t i = 0; i < (UINT)eKeyCode::End; i++) {
+
 			key key = {};
 			key.bPressed = false;
 			key.state = eKeyState::None;
@@ -22,9 +32,9 @@ namespace lee {
 			mKeys.push_back(key);
 		}
 	}
-	void InPut::Updata()
+
+	void InPut::updataKey()
 	{
-		//유니티등 엔진에 키 입력을 구현
 		for (size_t i = 0; i < (UINT)eKeyCode::End; i++) {//키가 눌렷는지 아닌지
 			if (GetAsyncKeyState(ASCII[i]) & 0x8000) {
 				if (mKeys[i].bPressed == true) {
@@ -44,6 +54,5 @@ namespace lee {
 				}
 			}
 		}
-
 	}
 }
