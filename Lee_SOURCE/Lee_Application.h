@@ -11,11 +11,11 @@ namespace lee {
 		Application();
 		~Application();
 		void Initialize(HWND);//이니셜라이즈
-		void Run(int);
+		void Run();
 
-		void Updata(int);
+		void Updata();
 		void LateUpdata();
-		void Render(int);//랜더에서 그리기 사용
+		void Render();//랜더에서 그리기 사용
 
 	private:
 		HWND mHwnd;

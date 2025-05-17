@@ -6,8 +6,7 @@
 
 #include "..\\Lee_SOURCE\\Lee_Application.h" //my
 
-lee::Application p1;//전역변수 my
-lee::Application p2;
+lee::Application p;//전역변수 my
 
 #define MAX_LOADSTRING 100
 
@@ -63,8 +62,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, //프로그램의 인스턴스 �
         }
         else
         {
-            p1.Run(0);
-            p2.Run(1);
+            p.Run();
         }
     }
 
@@ -127,8 +125,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
       CW_USEDEFAULT, 0, 1600, 900, nullptr, nullptr, hInstance, nullptr);
        //화면 위치        크기
    
-   p1.Initialize(hWnd); //받은 핸들을 Application 함수에 넣음 my
-   p2.Initialize(hWnd);
+   p.Initialize(hWnd); //받은 핸들을 Application 함수에 넣음 my
 
    if (!hWnd)
    {

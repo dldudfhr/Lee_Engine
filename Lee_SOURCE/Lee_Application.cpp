@@ -18,21 +18,21 @@ namespace lee {
 		Time::Initialize();
 	}
 
-	void Application::Run(int a) 
+	void Application::Run() 
 	{
-		Updata(a);
+		Updata();
 		LateUpdata();
-		Render(a);
+		Render();
 		
 
 	}
 
-	void Application::Updata(int a) 
+	void Application::Updata() 
 	{
 		InPut::Updata();
 		Time::Updata();
 
-		player.Updata(a);
+		player.Updata();
 	}
 
 	void Application::LateUpdata()
@@ -40,9 +40,9 @@ namespace lee {
 
 	}
 
-	void Application::Render(int a)
+	void Application::Render()
 	{
-		player.Render(mHdc, a);
+		player.Render(mHdc);
 		Time::Render(mHdc);
 	}
 }

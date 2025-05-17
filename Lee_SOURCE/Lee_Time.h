@@ -10,10 +10,13 @@ namespace lee
 		static void Initialize();
 		static void Updata();
 		static void Render(HDC hdc);
+		static float Fps;
+		
 	private:
 		static LARGE_INTEGER CpuFrequency; // 고유 진동수
 		static LARGE_INTEGER PrevFrequency; // 이전진동수
 		static LARGE_INTEGER CurrentFrequency; // 현재진동수
+		
 		static float DeltaTime;
 	};
 }

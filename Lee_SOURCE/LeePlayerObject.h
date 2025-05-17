@@ -1,5 +1,6 @@
 #pragma once
 #include "Commonlnclude.h" // 이거 필수
+#include "Lee_Time.h"
 
 namespace lee {
 	class Player_Object
@@ -8,9 +9,9 @@ namespace lee {
 		Player_Object();
 		~Player_Object();
 
-		void Updata(int);
+		void Updata();
 		void LateUdata();
-		void Render(HDC mHdc, int);
+		void Render(HDC mHdc);
 	private:
 		float mSpeed;
 		float mx;
