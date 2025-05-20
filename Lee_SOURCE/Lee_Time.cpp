@@ -4,8 +4,7 @@ namespace lee
 	LARGE_INTEGER Time::CpuFrequency = {}; // 고유 진동수
 	LARGE_INTEGER Time::PrevFrequency = {}; // 이전진동수
 	LARGE_INTEGER Time::CurrentFrequency = {}; // 현재진동수
-	float Time::DeltaTime = 0.0f;;
-	float Time::Fps = 0.0f;
+	float Time::DeltaTime = 0.0f;
 
 	void Time::Initialize()
 	{
@@ -16,6 +15,7 @@ namespace lee
 	}
 	void Time::Updata()
 	{
+		//현재 진동수
 		QueryPerformanceCounter(&CurrentFrequency);
 
 		float differenceFrequency
@@ -28,13 +28,12 @@ namespace lee
 	}
 	void Time::Render(HDC hdc)
 	{
-		float time = 0.0f;
+		float fps = 0.0f;
 
-		time = 1 / DeltaTime;
-		Fps = time;
+		fps = 1 / DeltaTime;
 
 		wchar_t str[50] = L"";  //리터럴
-		swprintf_s(str, 50, L"fps : %f", time);
+		swprintf_s(str, 50, L"fps : %d", (int)fps);
 		int len = wcsnlen_s(str, 50); // 문자열 길이
 
 		TextOut(hdc, 0, 0, str, len);

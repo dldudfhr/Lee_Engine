@@ -10,7 +10,7 @@ namespace lee
 		static void Initialize();
 		static void Updata();
 		static void Render(HDC hdc);
-		static float Fps;
+		static float GetFps() { return DeltaTime; }
 		
 	private:
 		static LARGE_INTEGER CpuFrequency; // 고유 진동수

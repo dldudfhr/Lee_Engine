@@ -14,24 +14,19 @@ namespace lee {
 
 	void Player_Object::Updata()
 	{
-		
-		mSpeed = 500.0f;
+		mSpeed = 200.0f;
 		if (InPut::GetKey(eKeyCode::A)) {
-			mx -= mSpeed / Time::Fps;
+			mx -= mSpeed * Time::GetFps();
 		}
 		if (InPut::GetKey(eKeyCode::D)) {
-			mx += mSpeed / Time::Fps;
+			mx += mSpeed * Time::GetFps();
 		}
 		if (InPut::GetKey(eKeyCode::W)) {
-			my -= mSpeed / Time::Fps;
+			my -= mSpeed * Time::GetFps();
 		}
 		if (InPut::GetKey(eKeyCode::S)) {
-			my += mSpeed / Time::Fps;
+			my += mSpeed * Time::GetFps();
 		}
-			
-	
-
-
 		//my += mSpeed;
 	}
 

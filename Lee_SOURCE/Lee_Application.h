@@ -10,7 +10,7 @@ namespace lee {
 	public:
 		Application();
 		~Application();
-		void Initialize(HWND);//이니셜라이즈
+		void Initialize(HWND, UINT, UINT);//이니셜라이즈
 		void Run();
 
 		void Updata();
@@ -21,6 +21,12 @@ namespace lee {
 		HWND mHwnd;
 		HDC mHdc;
 		
+		HDC mBackHdc;
+		HBITMAP mBackBitmap;//핸들의 자료형
+
+		UINT mWidth;
+		UINT mHeight;
+
 		Player_Object player;
 		
 	};
